@@ -11,7 +11,8 @@ class Cell {
         this.heartRate = 10;
     }
     render() {
-        stroke(this.color);
+        stroke(255);
+        strokeWeight(5);
         fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
     }
@@ -29,14 +30,14 @@ class Cell {
         this.vel.mult(0.99);
         if (
             (this.pos.x - this.size / 2 < 0) ||
-            (this.pos.x + this.size / 2 > 600)
+            (this.pos.x + this.size / 2 > wnX)
         ) {
             this.vel.x *= -1;
         }
 
         if (
             (this.pos.y - this.size / 2 < 0) ||
-            (this.pos.y + this.size / 2 > 600)
+            (this.pos.y + this.size / 2 > wnY)
         ) {
             this.vel.y *= -1;
         }

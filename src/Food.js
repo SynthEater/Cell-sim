@@ -7,14 +7,15 @@ class Food {
     }
 
     render() {
-        stroke(10);
-        fill(220);
+        stroke(255, 110, 80);
+        strokeWeight(5);
+        fill(255);
         ellipse(this.x, this.y, this.size, this.size);
     }
 
     move() {
-        this.x = 600 * noise(this.xoff);
-        this.y = 600 * noise(this.xoff + 1000);
+        this.x = wnX * noise(this.xoff);
+        this.y = wnY * noise(this.xoff + 1000);
         this.xoff += 0.0001;
     }
 }
