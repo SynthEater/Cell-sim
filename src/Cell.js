@@ -9,6 +9,8 @@ class Cell {
         this.tick = 0;
         //freq des heartbeats
         this.heartRate = 10;
+        this.force = 1;
+
     }
     render() {
         stroke(random(88, 107), random(60, 78), random(158, 184));
@@ -22,12 +24,15 @@ class Cell {
     }
 
     heartbeat() {
-        this.applyForce(random(-1, 1), random(-1, 1));
+        this.applyForce(
+            random(-this.force, this.force),
+            random(-this.force, this.force)
+        );
     }
 
     move() {
         this.pos.add(this.vel);
-        this.vel.mult(0.99);
+        this.vel.mult(0.985);
         if (
             (this.pos.x - this.size / 2 < 0) ||
             (this.pos.x + this.size / 2 > wnX)
