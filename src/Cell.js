@@ -2,7 +2,7 @@ class Cell {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
-        this.size = random(24, 60);
+        this.size = random(30, 62);
         this.color = color(random(50, 255), random(50, 255), random(50, 255));
         this.xoff = random(0, 100);
         //compteur des heartbeats
@@ -11,8 +11,8 @@ class Cell {
         this.heartRate = 10;
     }
     render() {
-        stroke(255);
-        strokeWeight(5);
+        stroke(99, 70, 170);
+        strokeWeight(2);
         fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
     }
@@ -48,7 +48,6 @@ class Cell {
             this.heartbeat();
             this.tick = 0;
         }
-
     }
 
     applyForce(x, y) {

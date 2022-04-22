@@ -2,15 +2,15 @@ class Food {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 10;
+        this.size = 14;
         this.xoff = random(0, 1000);
     }
 
     render() {
-        stroke(255, 110, 80);
-        strokeWeight(5);
+        stroke(255, 100, 70);
+        strokeWeight(3);
         fill(255);
-        ellipse(this.x, this.y, this.size, this.size);
+        rect(this.x, this.y, this.size, this.size);
     }
 
     move() {

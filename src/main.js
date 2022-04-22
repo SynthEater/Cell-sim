@@ -1,6 +1,6 @@
 let c = [];
 let f = [];
-let population = 60;
+let population = 38;
 let foodPop = 8;
 let wnX = window.innerWidth;
 let wnY = window.innerHeight;
@@ -29,4 +29,6 @@ function draw() {
         //f[j].move();
         f[j].render();
     }
+
+
 }
