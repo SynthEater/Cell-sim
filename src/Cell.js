@@ -2,7 +2,7 @@ class Cell {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
-        this.size = random(30, 62);
+        this.size = random(48, 80);
         this.color = color(random(50, 255), random(50, 255), random(50, 255));
         this.xoff = random(0, 100);
         //compteur des heartbeats
@@ -11,8 +11,8 @@ class Cell {
         this.heartRate = 10;
     }
     render() {
-        stroke(99, 70, 170);
-        strokeWeight(2);
+        stroke(random(88, 107), random(60, 78), random(158, 184));
+        strokeWeight(3);
         fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
     }
@@ -48,6 +48,12 @@ class Cell {
             this.heartbeat();
             this.tick = 0;
         }
+
+        //essais de faire repousser les cells par la souris
+
+        // if ((MouseX + this.size / 2) < (this.pos.x + this.size / 2)) {
+        //     this.vel.y *= -1;
+        // }
     }
 
     applyForce(x, y) {

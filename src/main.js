@@ -1,7 +1,7 @@
 let c = [];
 let f = [];
 let population = 38;
-let foodPop = 8;
+let foodPop = 10;
 let wnX = window.innerWidth;
 let wnY = window.innerHeight;
 
