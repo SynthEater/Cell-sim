@@ -1,17 +1,20 @@
 class Cell {
     constructor(x, y) {
-        this.pos = createVector(x, y);
-        this.vel = createVector(0, 0);
-        this.size = random(48, 80);
-        this.color = color(random(50, 255), random(50, 255), random(50, 255));
-        this.xoff = random(0, 100);
-        //compteur des heartbeats
-        this.tick = 0;
-        //freq des heartbeats
-        this.heartRate = 10;
-        this.force = 1;
+            this.pos = createVector(x, y);
+            this.vel = createVector(0, 0);
+            this.size = random(48, 80);
+            this.color = color(random(50, 255), random(50, 255), random(50, 255));
+            this.xoff = random(0, 100);
+            //compteur des heartbeats
+            this.tick = 0;
+            //freq des heartbeats
+            this.heartRate = 10;
+            this.force = 1;
 
-    }
+        }
+        //isColliding(others) {
+
+    //}
     render() {
         stroke(random(88, 107), random(60, 78), random(158, 184));
         strokeWeight(3);
