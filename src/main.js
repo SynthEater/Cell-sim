@@ -24,10 +24,10 @@ function setup() {
 function draw() {
     background(0);
 
-    for (let i = 0; i <= population; i++) {
+    for (let i = 0; i < c.length; i++) {
         c[i].move();
         c[i].render();
-        //c[i].isColliding(c);
+
     }
 
     for (let j = 0; j <= foodPop; j++) {

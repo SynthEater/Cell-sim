@@ -10,26 +10,19 @@ class Cell {
         //freq des heartbeats
         this.heartRate = 2;
         this.force = 1;
+        this.collides = false;
+        //this.acc = createVector(x, y);
 
     }
 
     isColliding(others) {
 
-        for (let i = 0; i >= population; i++) {
-
-            if (this.pos.x - others[i].pos.x > this.size / 2 + others[i].size / 2 &&
-                this.pos.y - others[i].pos.y > this.size / 2 + others[i].size / 2 &&
-                //empecher de self-verifier
-                this != c[i]) {
-
-
-                return 0;
-            } else if (this.pos.x - others[i].pos.x < this.size / 2 + others[i].size / 2 &&
-                this.pos.y - others[i].pos.y < this.size / 2 + others[i].size / 2 &&
-                //empecher de self-verifier
-                this != c[i]) {
-
-                return 1;
+        for (let i = 0; i < others.length; i++) {
+            let d = dist(this.pos.x, this.pos.y, others[i].pos.x, others[i].pos.y);
+            if (this != others[i]) {
+                if (d < (this.size + others[i].size) / 2) {
+                    return true;
+                }
             }
         }
 
@@ -38,7 +31,8 @@ class Cell {
     render() {
         stroke(random(88, 107), random(60, 78), random(158, 184));
         strokeWeight(3);
-        fill(this.color);
+        if (this.collides) fill(255, 0, 0)
+        else fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
     }
 
@@ -78,10 +72,14 @@ class Cell {
         }
 
         //make cells turn around if colliding
-        if (this.isColliding(c) === 1) {
+        if (this.isColliding(c)) {
 
-            this.vel.x *= -1;
-            this.vel.y *= -1;
+            this.collides = true;
+
+
+
+        } else {
+            this.collides = false;
         }
 
 
