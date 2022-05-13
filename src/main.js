@@ -14,6 +14,15 @@ let friction = 0.971;
 let mouseSlider;
 let mouseProximity = 25;
 
+// let sizeSlider;
+// let cellSize = 32;
+
+let backgroundSlider;
+let backColor = 0;
+
+// let colorSlider;
+// let cellColor
+
 
 function setup() {
 
@@ -26,12 +35,20 @@ function setup() {
     bounceSlider.position(10, 10);
 
     //slider friciton
-    frictionSlider = createSlider(0.92, 1, 0.971, 0.0001);
+    frictionSlider = createSlider(0.92, 1, 0.967, 0.0001);
     frictionSlider.position(230, 10);
 
     //slider mouse
-    mouseSlider = createSlider(20, 110, 25);
+    mouseSlider = createSlider(0, 110, 40);
     mouseSlider.position(453, 10);
+
+    //slider cell size
+    // sizeSlider = createSlider(12, 80, 32, 1);
+    // sizeSlider.position(650, 10);  / revoir position
+
+    //slider background color
+    backgroundSlider = createSlider(0, 255, 0);
+    backgroundSlider.position(650, 10);
 
     //generating cells
     for (let i = 0; i < population; i++) {
@@ -47,7 +64,7 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+    background(backColor);
 
     //Text slider bounce
     textSize(20);
@@ -64,15 +81,36 @@ function draw() {
     textSize(20);
     noStroke();
     fill(0, 255, 0);
-    text(`Mouse-Chase dist ${mouseProximity}`, 445, 60);
+    text(`Mouse-Chase dist ${mouseProximity}`, 435, 60);
+
+    //Text slider size
+    // textSize(20);
+    // noStroke();
+    // fill(0, 255, 0);
+    // text(`Cell size ${cellSize}`, 650, 60);
+
+    //Text slider back color
+    textSize(20);
+    noStroke();
+    fill(0, 255, 0);
+    text(`Background Shade ${backColor}`, 650, 60);
+    //Text slider back color grayscale
+    textSize(17);
+    noStroke();
+    fill(0, 255, 0);
+    text(`(Grayscale)`, 680, 84);
 
     bounceIntensity = bounceSlider.value();
     friction = frictionSlider.value();
     mouseProximity = mouseSlider.value();
+    //cellSize = sizeSlider.value();
+    backColor = backgroundSlider.value();
+
 
     for (let i = 0; i < c.length; i++) {
         c[i].move();
         c[i].render();
+
     }
 
     for (let j = 0; j < f.length; j++) {
