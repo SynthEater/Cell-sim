@@ -90,7 +90,6 @@ class Cell {
         this.vel.mult(friction);
         this.acc.mult(0);
     }
-
     applyForce(x, y) {
         this.acc.x += x;
         this.acc.y += y;

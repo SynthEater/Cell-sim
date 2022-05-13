@@ -40,11 +40,13 @@ function setup() {
 function draw() {
     background(0);
 
+    //Text slider bounce
     textSize(20);
     noStroke();
     fill(0, 255, 0);
     text(`Bounce Vel ${bounceIntensity}`, 10, 60);
 
+    //Text slider friction
     textSize(20);
     fill(0, 255, 0);
     text(`Frictionlessness ${friction}`, 200, 60);
@@ -55,7 +57,6 @@ function draw() {
     for (let i = 0; i < c.length; i++) {
         c[i].move();
         c[i].render();
-
     }
 
     for (let j = 0; j < f.length; j++) {
