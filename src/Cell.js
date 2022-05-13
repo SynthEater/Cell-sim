@@ -4,7 +4,8 @@ class Cell {
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0);
         this.size = random(32, 32);
-        this.color = color(240) //color(random(50, 255), random(50, 255), random(50, 255));
+        //this.color = color(240) 
+        this.color = color(random(50, 255), random(50, 255), random(50, 255));
         this.xoff = random(0, 100);
         //compteur des heartbeats
         this.tick = 0;

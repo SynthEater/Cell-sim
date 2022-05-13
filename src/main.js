@@ -40,6 +40,15 @@ function setup() {
 function draw() {
     background(0);
 
+    textSize(20);
+    noStroke();
+    fill(0, 255, 0);
+    text(`Bounce Vel ${bounceIntensity}`, 10, 60);
+
+    textSize(20);
+    fill(0, 255, 0);
+    text(`Frictionlessness ${friction}`, 200, 60);
+
     bounceIntensity = bounceSlider.value();
     friction = frictionSlider.value();
 
