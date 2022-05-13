@@ -14,8 +14,8 @@ class Food {
     }
 
     move() {
-        this.x = wnX * random(this.xoff, 400);
-        this.y = wnY * random(this.xoff, 400);
+        this.x = wnX * noise(this.xoff);
+        this.y = wnY * noise(this.xoff + 1000);
         this.xoff += 0.0001;
     }
 }

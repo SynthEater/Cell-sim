@@ -2,8 +2,9 @@ class Cell {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
-        this.size = random(48, 80);
-        this.color = color(random(50, 255), random(50, 255), random(50, 255));
+        this.acc = createVector(0, 0);
+        this.size = random(32, 32);
+        this.color = color(240) //color(random(50, 255), random(50, 255), random(50, 255));
         this.xoff = random(0, 100);
         //compteur des heartbeats
         this.tick = 0;
@@ -11,8 +12,6 @@ class Cell {
         this.heartRate = 2;
         this.force = 1;
         this.collides = false;
-        //this.acc = createVector(x, y);
-
     }
 
     isColliding(others) {
@@ -21,16 +20,17 @@ class Cell {
             let d = dist(this.pos.x, this.pos.y, others[i].pos.x, others[i].pos.y);
             if (this != others[i]) {
                 if (d < (this.size + others[i].size) / 2) {
-                    return true;
+                    return others[i];
                 }
             }
         }
-
+        return undefined;
     }
 
     render() {
         stroke(random(88, 107), random(60, 78), random(158, 184));
         strokeWeight(3);
+        //change to red when colliding
         if (this.collides) fill(255, 0, 0)
         else fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
@@ -41,15 +41,13 @@ class Cell {
     }
 
     heartbeat() {
-        this.applyForce(
-            random(-this.force, this.force),
-            random(-this.force, this.force)
-        );
+        // this.applyForce(
+        //     random(-this.force, this.force),
+        //     random(-this.force, this.force)
+        // );
     }
 
     move() {
-        this.pos.add(this.vel);
-        this.vel.mult(0.985);
         if (
             (this.pos.x - this.size / 2 < 0) ||
             (this.pos.x + this.size / 2 > wnX)
@@ -72,26 +70,27 @@ class Cell {
         }
 
         //make cells turn around if colliding
-        if (this.isColliding(c)) {
+        let collidingCell = this.isColliding(c);
+        if (collidingCell !== undefined) {
 
             this.collides = true;
 
-
+            //trouver vecteur entre this et others
+            let distX = collidingCell.pos.x - this.pos.x
+            let distY = collidingCell.pos.y - this.pos.y
+            this.applyForce(-distX * 0.1, -distY * 0.1);
 
         } else {
             this.collides = false;
         }
-
-
-
-        //essais de faire repousser les cells par la souris
-
-        // if ((MouseX + this.size / 2) < (this.pos.x + this.size / 2)) {
-        //     this.vel.y *= -1;
-        // }
+        this.vel.add(this.acc);
+        this.pos.add(this.vel);
+        this.vel.mult(0.985);
+        this.acc.mult(0);
     }
 
     applyForce(x, y) {
-        this.vel.add(x, y);
+        this.acc.x += x;
+        this.acc.y += y;
     }
 }
