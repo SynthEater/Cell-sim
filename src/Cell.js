@@ -1,20 +1,40 @@
 class Cell {
     constructor(x, y) {
-            this.pos = createVector(x, y);
-            this.vel = createVector(0, 0);
-            this.size = random(48, 80);
-            this.color = color(random(50, 255), random(50, 255), random(50, 255));
-            this.xoff = random(0, 100);
-            //compteur des heartbeats
-            this.tick = 0;
-            //freq des heartbeats
-            this.heartRate = 10;
-            this.force = 1;
+        this.pos = createVector(x, y);
+        this.vel = createVector(0, 0);
+        this.size = random(48, 80);
+        this.color = color(random(50, 255), random(50, 255), random(50, 255));
+        this.xoff = random(0, 100);
+        //compteur des heartbeats
+        this.tick = 0;
+        //freq des heartbeats
+        this.heartRate = 2;
+        this.force = 1;
 
+    }
+
+    isColliding(others) {
+
+        for (let i = 0; i >= population; i++) {
+
+            if (this.pos.x - others[i].pos.x > this.size / 2 + others[i].size / 2 &&
+                this.pos.y - others[i].pos.y > this.size / 2 + others[i].size / 2 &&
+                //empecher de self-verifier
+                this != c[i]) {
+
+
+                return 0;
+            } else if (this.pos.x - others[i].pos.x < this.size / 2 + others[i].size / 2 &&
+                this.pos.y - others[i].pos.y < this.size / 2 + others[i].size / 2 &&
+                //empecher de self-verifier
+                this != c[i]) {
+
+                return 1;
+            }
         }
-        //isColliding(others) {
 
-    //}
+    }
+
     render() {
         stroke(random(88, 107), random(60, 78), random(158, 184));
         strokeWeight(3);
@@ -56,6 +76,15 @@ class Cell {
             this.heartbeat();
             this.tick = 0;
         }
+
+        //make cells turn around if colliding
+        if (this.isColliding(c) === 1) {
+
+            this.vel.x *= -1;
+            this.vel.y *= -1;
+        }
+
+
 
         //essais de faire repousser les cells par la souris
 

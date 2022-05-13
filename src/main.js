@@ -27,12 +27,11 @@ function draw() {
     for (let i = 0; i <= population; i++) {
         c[i].move();
         c[i].render();
+        //c[i].isColliding(c);
     }
 
     for (let j = 0; j <= foodPop; j++) {
         //f[j].move();
         f[j].render();
     }
-
-
 }
