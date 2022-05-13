@@ -49,6 +49,7 @@ class Cell {
         // );
     }
 
+
     move() {
         if (
             (this.pos.x - this.size / 2 < 0) ||
@@ -89,7 +90,22 @@ class Cell {
         this.pos.add(this.vel);
         this.vel.mult(friction);
         this.acc.mult(0);
+
+        //MOUSE - CHASE
+        if (dist(this.pos.x, this.pos.y, mouseX, mouseY) < 60) {
+
+            //trouver vecteur entre this et others
+            let distX = mouseX - this.pos.x
+            let distY = mouseY - this.pos.y
+            this.applyForce(-distX * bounceIntensity, -distY * bounceIntensity);
+        }
+
+        this.vel.add(this.acc);
+        this.pos.add(this.vel);
+        this.vel.mult(friction);
+        this.acc.mult(0);
     }
+
     applyForce(x, y) {
         this.acc.x += x;
         this.acc.y += y;
