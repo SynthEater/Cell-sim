@@ -40,6 +40,7 @@ class Cell {
         this.size += n;
     }
 
+    //FONCTION HEARTBEAT COMMENT OUT: CELLS FIX EXEPT COLLIDING
     heartbeat() {
         // this.applyForce(
         //     random(-this.force, this.force),
@@ -78,14 +79,14 @@ class Cell {
             //trouver vecteur entre this et others
             let distX = collidingCell.pos.x - this.pos.x
             let distY = collidingCell.pos.y - this.pos.y
-            this.applyForce(-distX * 0.1, -distY * 0.1);
+            this.applyForce(-distX * bounceIntensity, -distY * bounceIntensity);
 
         } else {
             this.collides = false;
         }
         this.vel.add(this.acc);
         this.pos.add(this.vel);
-        this.vel.mult(0.985);
+        this.vel.mult(friction);
         this.acc.mult(0);
     }
 
