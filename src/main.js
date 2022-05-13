@@ -9,20 +9,29 @@ let bounceSlider;
 let bounceIntensity = 0.1;
 
 let frictionSlider;
-let friction = 0.985;
+let friction = 0.971;
+
+let mouseSlider;
+let mouseProximity = 25;
 
 
 function setup() {
 
     createCanvas(wnX, wnY);
 
+    //Checkbox on/off mouse chase
+
     //slider bounce force
     bounceSlider = createSlider(0.1, 0.5, 0.25, 0.0001);
     bounceSlider.position(10, 10);
 
     //slider friciton
-    frictionSlider = createSlider(0.92, 1, 0.985, 0.0001);
-    frictionSlider.position(200, 10);
+    frictionSlider = createSlider(0.92, 1, 0.971, 0.0001);
+    frictionSlider.position(230, 10);
+
+    //slider mouse
+    mouseSlider = createSlider(20, 110, 25);
+    mouseSlider.position(453, 10);
 
     //generating cells
     for (let i = 0; i < population; i++) {
@@ -51,8 +60,15 @@ function draw() {
     fill(0, 255, 0);
     text(`Frictionlessness ${friction}`, 200, 60);
 
+    //Text slider mouse
+    textSize(20);
+    noStroke();
+    fill(0, 255, 0);
+    text(`Mouse-Chase dist ${mouseProximity}`, 445, 60);
+
     bounceIntensity = bounceSlider.value();
     friction = frictionSlider.value();
+    mouseProximity = mouseSlider.value();
 
     for (let i = 0; i < c.length; i++) {
         c[i].move();

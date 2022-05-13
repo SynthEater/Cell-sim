@@ -92,7 +92,7 @@ class Cell {
         this.acc.mult(0);
 
         //MOUSE - CHASE
-        if (dist(this.pos.x, this.pos.y, mouseX, mouseY) < 60) {
+        if (dist(this.pos.x, this.pos.y, mouseX, mouseY) < mouseProximity) {
 
             //trouver vecteur entre this et others
             let distX = mouseX - this.pos.x
