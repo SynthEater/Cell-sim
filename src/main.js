@@ -95,10 +95,7 @@ function draw() {
     fill(0, 255, 0);
     text(`Background Shade ${backColor}`, 650, 60);
     //Text slider back color grayscale
-    textSize(17);
-    noStroke();
-    fill(0, 255, 0);
-    text(`(Grayscale)`, 680, 84);
+
 
     bounceIntensity = bounceSlider.value();
     friction = frictionSlider.value();
