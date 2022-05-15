@@ -60,7 +60,7 @@ function setup() {
         f[j] = new Food(random(0, wnX), random(0, wnY));
     }
 
-    //frameRate(5);
+    frameRate(54);
 }
 
 function draw() {
