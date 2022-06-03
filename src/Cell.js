@@ -34,20 +34,26 @@ class Cell {
         //change to red when colliding
         if (this.collides) fill(255, 0, 0)
         else fill(this.color);
-        ellipse(this.pos.x, this.pos.y, this.size, this.size);
+        ellipse(this.pos.x, this.pos.y, this.size);
     }
 
     incrementSize(n = 1) {
         this.size += n;
     }
 
+
+
+    // faire un checkbox ou bouton qui active/desactive le heartbeat
+
+
+
     //FONCTION HEARTBEAT COMMENT OUT: CELLS FIX EXEPT COLLIDING
-    heartbeat() {
-        // this.applyForce(
-        //     random(-this.force, this.force),
-        //     random(-this.force, this.force)
-        // );
-    }
+    // heartbeat() {
+    //     this.applyForce(
+    //         random(-this.force, this.force),
+    //         random(-this.force, this.force)
+    //     );
+    // }
 
 
     move() {

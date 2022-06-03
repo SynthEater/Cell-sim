@@ -20,8 +20,8 @@ let mouseProximity = 25;
 let backgroundSlider;
 let backColor = 0;
 
-// let colorSlider;
-// let cellColor
+let textSizeSlider;
+let textsize;
 
 
 function setup() {
@@ -49,6 +49,7 @@ function setup() {
     //slider background color
     backgroundSlider = createSlider(0, 255, 0);
     backgroundSlider.position(650, 10);
+
 
     //generating cells
     for (let i = 0; i < population; i++) {
@@ -94,7 +95,6 @@ function draw() {
     noStroke();
     fill(0, 255, 0);
     text(`Background Shade ${backColor}`, 650, 60);
-    //Text slider back color grayscale
 
 
     bounceIntensity = bounceSlider.value();
@@ -104,10 +104,10 @@ function draw() {
     backColor = backgroundSlider.value();
 
 
+
     for (let i = 0; i < c.length; i++) {
         c[i].move();
         c[i].render();
-
     }
 
     for (let j = 0; j < f.length; j++) {
