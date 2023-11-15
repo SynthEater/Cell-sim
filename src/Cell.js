@@ -51,9 +51,9 @@ class Cell {
     // heartbeat() {
     //     this.applyForce(
     //         random(-this.force, this.force),
-    //         random(-this.force, this.force)
-    //     );
-    // }
+    //        random(-this.force, this.force)
+    //    );
+    //}
 
 
     move() {
@@ -74,7 +74,7 @@ class Cell {
         if (this.tick < this.heartRate) {
             this.tick++;
         } else {
-            this.heartbeat();
+            //this.heartbeat();
             this.tick = 0;
         }
 

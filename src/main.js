@@ -44,7 +44,7 @@ function setup() {
 
     //slider cell size
     // sizeSlider = createSlider(12, 80, 32, 1);
-    // sizeSlider.position(650, 10);  / revoir position
+    // sizeSlider.position(850, 10);  // revoir position
 
     //slider background color
     backgroundSlider = createSlider(0, 255, 0);
